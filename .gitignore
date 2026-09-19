@@ -1,0 +1,30 @@
+# macOS
+.DS_Store
+
+# Personal Obsidian configuration and workspace state
+.obsidian/
+.trash/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+*~
+
+# Common build artifacts
+build/
+dist/
+out/
+__pycache__/
+*.py[cod]
+
+# IDE-local configuration
+.idea/
+.vscode/
