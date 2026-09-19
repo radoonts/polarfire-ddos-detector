@@ -36,21 +36,3 @@ See `FPGA Project/Roles/` for the current responsibility breakdown.
 4. Select the cloned repository folder.
 
 The `.obsidian/` directory is intentionally ignored so each teammate can keep personal Obsidian settings and workspace layout.
-
-## Basic collaboration workflow
-
-Before editing:
-
-```bash
-git pull --rebase
-```
-
-After editing:
-
-```bash
-git add .
-git commit -m "Describe the update"
-git push
-```
-
-For code changes, use a separate branch and pull request when practical. Avoid committing credentials, private datasets, generated build directories, or third-party files whose licenses do not permit redistribution.
