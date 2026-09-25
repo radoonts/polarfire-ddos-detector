@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="960" viewBox="0 0 1600 960" role="img" aria-labelledby="title desc">
+  <title id="title">PolarFire SoC Inline DDoS Detector System Block Diagram</title>
+  <desc id="desc">Traffic moves through a fast forwarding path while packet metadata is analyzed by software and FPGA acceleration in a sideband path.</desc>
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#1e293b" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow-cyan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10Z" fill="#22d3ee"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10Z" fill="#34d399"/>
+    </marker>
+    <marker id="arrow-rose" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10Z" fill="#fb7185"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+    <style>
+      .title { font: 700 32px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fill: #f8fafc; }
+      .subtitle { font: 16px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fill: #94a3b8; }
+      .section { font: 700 18px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fill: #e2e8f0; letter-spacing: .5px; }
+      .label { font: 700 16px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fill: #f8fafc; }
+      .small { font: 13px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fill: #cbd5e1; }
+      .tiny { font: 12px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fill: #94a3b8; }
+      .external { fill: #0f172a; stroke: #94a3b8; stroke-width: 2; }
+      .forward { fill: #083344; stroke: #22d3ee; stroke-width: 2; }
+      .software { fill: #064e3b; stroke: #34d399; stroke-width: 2; }
+      .fpga { fill: #4c1d95; stroke: #a78bfa; stroke-width: 2; }
+      .security { fill: #881337; stroke: #fb7185; stroke-width: 2; }
+      .boundary { fill: rgba(15,23,42,.72); stroke: #fbbf24; stroke-width: 2.5; stroke-dasharray: 10 7; }
+      .flow { fill: none; stroke: #22d3ee; stroke-width: 5; marker-end: url(#arrow-cyan); }
+      .analysis { fill: none; stroke: #34d399; stroke-width: 3; marker-end: url(#arrow-green); }
+      .policy { fill: none; stroke: #fb7185; stroke-width: 3; stroke-dasharray: 8 6; marker-end: url(#arrow-rose); }
+    </style>
+  </defs>
+
+  <rect width="1600" height="960" fill="#020617"/>
+  <rect width="1600" height="960" fill="url(#grid)" opacity=".7"/>
+
+  <text x="70" y="64" class="title">PolarFire SoC Inline DDoS Detector</text>
+  <text x="70" y="94" class="subtitle">Fast packet forwarding with sideband FPGA-accelerated threat analysis</text>
+
+  <!-- Connections are drawn first so boxes remain readable. -->
+  <path class="flow" d="M250 255H380"/>
+  <path class="flow" d="M610 255H990"/>
+  <path class="flow" d="M1220 255H1350"/>
+  <path class="analysis" d="M800 295V382"/>
+  <path class="analysis" d="M610 445H675"/>
+  <path class="analysis" d="M925 445H990"/>
+  <path class="analysis" d="M1105 505V590H940"/>
+  <path class="analysis" d="M705 650H640"/>
+  <path class="analysis" d="M415 710V760H565"/>
+  <path class="policy" d="M790 760H1125V305"/>
+  <path class="analysis" d="M415 710V825H250"/>
+  <path class="analysis" d="M320 650H250"/>
+
+  <!-- Main SoC boundary -->
+  <rect x="335" y="140" width="930" height="700" rx="20" class="boundary" filter="url(#shadow)"/>
+  <text x="365" y="178" class="section">MICROCHIP POLARFIRE SOC ICICLE KIT</text>
+
+  <!-- Network endpoints -->
+  <rect x="70" y="205" width="180" height="100" rx="10" class="external"/>
+  <text x="160" y="244" text-anchor="middle" class="label">Network Side A</text>
+  <text x="160" y="270" text-anchor="middle" class="small">Traffic source / client</text>
+
+  <rect x="1350" y="205" width="180" height="100" rx="10" class="external"/>
+  <text x="1440" y="244" text-anchor="middle" class="label">Network Side B</text>
+  <text x="1440" y="270" text-anchor="middle" class="small">Protected destination</text>
+
+  <!-- Fast path -->
+  <rect x="380" y="205" width="230" height="100" rx="10" class="forward"/>
+  <text x="495" y="238" text-anchor="middle" class="label">Gigabit Ethernet 0</text>
+  <text x="495" y="265" text-anchor="middle" class="small">Receive frames</text>
+  <text x="495" y="286" text-anchor="middle" class="tiny">Ingress metadata tap</text>
+
+  <rect x="675" y="205" width="250" height="100" rx="10" class="forward"/>
+  <text x="800" y="238" text-anchor="middle" class="label">Fast Forwarding Path</text>
+  <text x="800" y="264" text-anchor="middle" class="small">Transparent bridge</text>
+  <text x="800" y="285" text-anchor="middle" class="tiny">Does not wait for each inference</text>
+
+  <rect x="990" y="205" width="230" height="100" rx="10" class="forward"/>
+  <text x="1105" y="238" text-anchor="middle" class="label">Gigabit Ethernet 1</text>
+  <text x="1105" y="265" text-anchor="middle" class="small">Forward frames</text>
+  <text x="1105" y="286" text-anchor="middle" class="tiny">Policy enforcement point</text>
+
+  <text x="800" y="340" text-anchor="middle" class="tiny" fill="#22d3ee">LEGITIMATE TRAFFIC CONTINUES AT THE TARGET LINK RATE</text>
+
+  <!-- Software sideband -->
+  <rect x="380" y="382" width="230" height="126" rx="10" class="software"/>
+  <text x="495" y="417" text-anchor="middle" class="label">Packet / Flow Parser</text>
+  <text x="495" y="445" text-anchor="middle" class="small">Headers and 5-tuple</text>
+  <text x="495" y="468" text-anchor="middle" class="small">Flow state</text>
+  <text x="495" y="490" text-anchor="middle" class="tiny">Linux on RISC-V processor</text>
+
+  <rect x="675" y="382" width="250" height="126" rx="10" class="software"/>
+  <text x="800" y="417" text-anchor="middle" class="label">Feature Extraction</text>
+  <text x="800" y="445" text-anchor="middle" class="small">Packets/s • bytes/s</text>
+  <text x="800" y="468" text-anchor="middle" class="small">SYN/ACK • UDP • sources</text>
+  <text x="800" y="490" text-anchor="middle" class="tiny">Flow or time-window vector</text>
+
+  <rect x="990" y="382" width="230" height="126" rx="10" class="security"/>
+  <text x="1105" y="417" text-anchor="middle" class="label">Fast Rules</text>
+  <text x="1105" y="445" text-anchor="middle" class="small">Threshold checks</text>
+  <text x="1105" y="468" text-anchor="middle" class="small">Protocol indicators</text>
+  <text x="1105" y="490" text-anchor="middle" class="tiny">Immediate deterministic signals</text>
+
+  <!-- FPGA inference -->
+  <rect x="705" y="590" width="235" height="120" rx="10" class="fpga"/>
+  <text x="822" y="625" text-anchor="middle" class="label">FPGA Fabric</text>
+  <text x="822" y="653" text-anchor="middle" class="small">Quantized ML inference</text>
+  <text x="822" y="676" text-anchor="middle" class="small">Pipelined calculations</text>
+  <text x="822" y="697" text-anchor="middle" class="tiny">Prediction + threat score</text>
+
+  <rect x="320" y="590" width="320" height="120" rx="10" class="software"/>
+  <text x="480" y="625" text-anchor="middle" class="label">Decision, Logging &amp; Telemetry</text>
+  <text x="480" y="653" text-anchor="middle" class="small">Benign • SYN flood • UDP flood</text>
+  <text x="480" y="676" text-anchor="middle" class="small">Alerts and performance metrics</text>
+  <text x="480" y="697" text-anchor="middle" class="tiny">Future: per-flow rate limit or block policy</text>
+
+  <!-- Policy and management -->
+  <rect x="565" y="740" width="225" height="80" rx="10" class="security"/>
+  <text x="677" y="772" text-anchor="middle" class="label">Flow Policy Table</text>
+  <text x="677" y="798" text-anchor="middle" class="small">Allow • limit • block</text>
+
+  <rect x="70" y="590" width="180" height="120" rx="10" class="external"/>
+  <text x="160" y="624" text-anchor="middle" class="label">Host / Console</text>
+  <text x="160" y="651" text-anchor="middle" class="small">PCAP replay</text>
+  <text x="160" y="674" text-anchor="middle" class="small">Model + test vectors</text>
+  <text x="160" y="697" text-anchor="middle" class="small">Alerts + measurements</text>
+
+  <!-- Footer notes -->
+  <rect x="70" y="875" width="1460" height="48" rx="8" fill="#0f172a" stroke="#334155"/>
+  <circle cx="100" cy="899" r="6" fill="#22d3ee"/><text x="116" y="904" class="tiny">Fast packet path</text>
+  <circle cx="285" cy="899" r="6" fill="#34d399"/><text x="301" y="904" class="tiny">Analysis/data flow</text>
+  <circle cx="500" cy="899" r="6" fill="#fb7185"/><text x="516" y="904" class="tiny">Optional mitigation feedback</text>
+  <text x="1500" y="904" text-anchor="end" class="tiny">Development: PCAP → mirrored traffic → inline deployment</text>
+</svg>

@@ -26,7 +26,14 @@ The initial target classes are benign traffic, SYN floods, and UDP floods. Devel
 - **Collin:** FPGA acceleration and system integration
 - **Kylie:** electrical hardware, instrumentation, and validation
 
-See `FPGA Project/Roles/` for the current responsibility breakdown.
+See `docs/roles/` for the current responsibility breakdown.
+
+## Project materials
+
+- [Project overview and novelty statement](docs/project-overview.md)
+- [System block diagram](docs/system-block-diagram.svg)
+
+![PolarFire SoC inline detector block diagram](docs/system-block-diagram.svg)
 
 ## Opening the notes in Obsidian
 
