@@ -33,4 +33,4 @@ A successful prototype could show how low-power, reconfigurable hardware can pro
 
 ## System Block Diagram
 
-![System block diagram](system-block-diagram.svg)
+![System block diagram](system-block-diagram.png)

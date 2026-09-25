@@ -31,9 +31,9 @@ See `docs/roles/` for the current responsibility breakdown.
 ## Project materials
 
 - [Project overview and novelty statement](docs/project-overview.md)
-- [System block diagram](docs/system-block-diagram.svg)
+- [System block diagram](docs/system-block-diagram.png)
 
-![PolarFire SoC inline detector block diagram](docs/system-block-diagram.svg)
+![PolarFire SoC inline detector block diagram](docs/system-block-diagram.png)
 
 ## Opening the notes in Obsidian
 
